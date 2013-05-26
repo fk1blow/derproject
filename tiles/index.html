@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>tiles test</title>
+	
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="../css/default.css">
+	<style>
+		#gamescreen {
+			position: absolute; top:0;
+			/*opacity: 0.5;*/
+			/*background-color: #c2c2c2;*/
+			/*border-style:dotted;*/
+			/*z-index: 2;*/
+			/*position:absolute; left:50%; top:50%; margin-top:-300px; margin-left:-500px;*/
+		}
+		#clip {
+			width: 78px; height: 78px;
+			/*background-color:red;*/
+			position: absolute; left:53px; top:53px;
+			border-style: solid;
+			border-width: 2px;
+			border-color: blue;
+			background-color:blue;
+			opacity: 0.4;
+			/*position:absolute; left:50%; top:50%; margin-left:-300px; margin-top:-150px;*/
+		}
+	</style>
+</head>
+<body style="margin:0;">
+	<div id="site">
+	    <!-- <canvas id="clip"></canvas> -->
+	    <canvas id="gamescreen" width="" height=""></canvas>
+	    <div id="clip">&nbsp;</div>
+	</div>
+
+	<script data-main="config.js" src="../js/libs/require.js"></script>
+</body>
+</html>

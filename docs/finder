@@ -1,0 +1,16 @@
+
+get neighbour_nodes
+	for every_item
+		calculate item cost
+			if (item = walkable)
+				add item into a stack
+	for walkable_stack
+		get lowest f
+
+
+for : siblings
+	marked array <- score(siblings[i])
+end
+
+sort marked array
+	

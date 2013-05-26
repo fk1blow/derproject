@@ -1,0 +1,22 @@
+You can map from screen space straight back to isometric space easily, using any x/y scaling. It's almost exactly the same calculation as going from map space to screen space. 2 functions showing this behaviour are:
+
+public PointF MapToAbsolute(PointF mapPoint)
+{
+	PointF screenPoint = new PointF();
+	screenPoint.X = (Scale / 2) * (mapPoint.X + mapPoint.Y);
+	screenPoint.Y = (Scale / 4) * (mapPoint.X - mapPoint.Y);
+	return screenPoint;
+}
+
+which I'm sure you are familiar with, and then it's opposite function (assuming you have an x/y mouse click, and want to turn it into an x,y grid position)
+
+public PointF AbsoluteToMap(PointF screenPoint)
+{
+	PointF mapPoint = new PointF();
+	screenPoint.X /= (Scale / 2);
+	screenPoint.Y /= (Scale / 4);
+
+	mapPoint.X = (screenPoint.X + screenPoint.Y) / 2;
+	mapPoint.Y = (screenPoint.X - screenPoint.Y) / 2;
+	return mapPoint;
+}

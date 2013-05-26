@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.briangrinstead.com/files/astar-original/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Astar Search Demo</title>
+		
+		<link rel="shortcut icon" href="http://www.briangrinstead.com/files/astar-original/favicon.ico">
+		
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="css/typography.css">
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="css/demo.css">
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/graph.js"></script>
+		<script type="text/javascript" src="js/astar.js"></script>
+		<script type="text/javascript">
+	
+		$(function() {
+			var $grid = $("#search_grid");
+			var $selectWallFrequency = $("#selectWallFrequency");
+			var $selectGridSize = $("#selectGridSize");
+			var $checkDebug = $("#checkDebug");
+			
+			var opts = { 
+			    wallFrequency: $selectWallFrequency.val(),
+			    gridSize: $selectGridSize.val(),
+			    debug: $checkDebug.attr("checked")
+			};
+			
+			var grid = new GraphSearch($grid, opts, astar.search);
+			
+			$("#btnGenerate").click(function() {
+				grid.initialize();
+			});
+			
+			$selectWallFrequency.change(function() {
+			    grid.setOption({wallFrequency: $(this).val()});
+			    grid.initialize();
+			});
+			
+			$selectGridSize.change(function() {
+			    grid.setOption({gridSize: $(this).val()});
+			    grid.initialize();
+			});
+			
+			$checkDebug.change(function() {
+			    grid.setOption({debug: $(this).attr("checked")});
+			});
+		});
+
+	</script>
+
+	</head>
+<body>
+	<div id="header">
+		<a href="http://www.briangrinstead.com/blog/">&lt;-- Brian Grinstead</a> |
+		<a href="http://www.briangrinstead.com/blog/astar-search-algorithm-in-javascript">Original Blog Post</a> |
+		<a href="http://github.com/bgrins/javascript-astar">Source Code</a>
+	</div>
+	<div id="content">
+		<h2>A* Search Algorithm</h2>
+<h5>This was updated on 9/15/2010 and is quite a bit faster now.  See the new demo at <a href="http://www.briangrinstead.com/files/astar/">http://www.briangrinstead.com/files/astar/</a></h5>
+	
+	    <div id="controls" class="clear">
+	    	
+	    		<label for="selectWallFrequency">Wall Frequency: </label>
+	    		<select id="selectWallFrequency">
+	    			<option value=".1">10%</option>
+	    			<option value=".2">20%</option>
+	    			<option value=".3">30%</option>
+	    			<option value=".4">40%</option>
+	    		</select>
+	    		<br>
+	    		<label for="selectGridSize">Grid Size: </label>
+	    		<select id="selectGridSize" name="selectGridSize">
+	    			<option value="10">10x10</option>
+	    			<option value="15" selected="selected">15x15</option>
+	    			<option value="20">20x20</option>
+	    			<option value="30">30x30</option>
+	    			<option value="50">50x50</option>
+	    			<option value="100">100x100</option>
+	    		</select>
+	    		
+	    		<br>
+	    		<label for="checkDebug">Show search info?</label>
+	    		<input type="checkbox" name="checkDebug" id="checkDebug">	
+	    		<br>
+	    		<input type="button" id="btnGenerate" value="Generate New Map">
+				<br>
+		<span id="message">search took 6ms.</span>
+	    </div>
+	    
+	    <div id="main">			    
+	    	<div id="search_grid"></div>
+	    </div>
+	
+	</div>
+	<div id="footer"></div>
+
+
+
+</body></html>
